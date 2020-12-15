@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛБ№3</title>
+    <style>
+        table td{
+            padding: 10px;
+            border: 2px solid black;
+        }
+        table {
+            margin: auto; /* Выравниваем таблицу по центру окна  */
+        }
+        thead th{
+            background: #3d3db7; /* Цвет фона строки заголовка */
+            color: #fff; /* Цвет текста */
+        }
+        tr:nth-child(odd) {
+            background: #d42fd4;
+            color: white;/* Цвет текста*/
+        }
+        tr:nth-child(even) { /* Четное число */
+            background: #ff7521;
+            color: black; /* Цвет текста*/
+        }
+    </style>
+</head>
+<body>
+<table id="numbers">
+    <thead><tr>
+        <th>Случ.число 1</th><th>Случ.число 2</th>
+    </tr></thead>
+    <tbody>
+    </tbody>
+</table>
+<script>
+    let counter = 0;
+    let limit = 7;
+    //let limit = prompt("Сколько строк надо добаваить?")
+    let interval = prompt("Какой интервал вас интересует? (милисекунды)") ;
+    addIntoTable();
+    function addIntoTable()
+    {
+        let t=document.createElement("tr"), t2=document.createElement("td"), t3=document.createElement("td");
+        t2.innerHTML= Math.round(Math.random() * (100 - 50) + 50);
+        t.appendChild(t2);
+        t3.innerHTML=Math.round(Math.random() * (100 - 50) + 50);
+        t.appendChild(t3);
+        document.getElementById("numbers").appendChild(t);
+        counter++;
+        if (counter < limit) { setTimeout(addIntoTable, interval);}
+    }
+</script>
+</body>
+</html>
